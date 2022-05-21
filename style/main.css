@@ -1,0 +1,20 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: calc(100vw/25 + 100vh/50);
+    font-family: monospace;
+    color: white;
+    background-color: lightskyblue;
+}
+
+body:hover {
+    cursor: pointer;
+}
