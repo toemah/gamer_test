@@ -26,9 +26,9 @@ const reaction_test = function () {
         })
         result /= times.length;
         result |= 0;
-        document.body.removeEventListener("click", response_test);
+        document.body.removeEventListener("mousedown", response_test);
         reaction_message(colors.end, `${result}ms\nclick to restart`);
-        document.body.addEventListener("click", restart);
+        document.body.addEventListener("mousedown", restart);
     }
 }
 
@@ -43,23 +43,23 @@ const reaction_soon = function () {
 }
 
 const response_test = function () {
-    document.body.removeEventListener("click", response_test);
+    document.body.removeEventListener("mousedown", response_test);
     if (times.length <= 5) {
         if (document.body.style.backgroundColor == colors.active) {
             reaction_message(colors.passive);
             const index = times.length - 1;
             times[index] = Date.now() - times[index];
-            document.body.addEventListener("click", response_test);
+            document.body.addEventListener("mousedown", response_test);
             reaction_test();
         } else {
             reaction_soon();
-            document.body.addEventListener("click", start);
+            document.body.addEventListener("mousedown", start);
         }
     }
 }
 
 const restart = function () {
-    document.body.removeEventListener("click", restart);
+    document.body.removeEventListener("mousedown", restart);
     times.length = 0;
     start();
 }
@@ -67,10 +67,10 @@ const restart = function () {
 const start = function () {
     reaction_message(colors.passive);
     reaction_test();
-    document.body.addEventListener("click", response_test);
-    document.body.removeEventListener("click", start);
+    document.body.addEventListener("mousedown", response_test);
+    document.body.removeEventListener("mousedown", start);
 }
 
-document.body.addEventListener("click", start);
+document.body.addEventListener("mousedown", start);
 
 reaction_message(colors.end, "click to start");
